@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Wattpad Novel List Extractor
 // @namespace    http://tampermonkey.net/
-// @version      2024.09.26
+// @version      2024.10.12
 // @description  Extrae títulos, enlaces y número de páginas de novelas de Wattpad y guarda en archivo txt o excel.
 // @author       wernser412
 // @match        https://www.wattpad.com/list/*
@@ -23,8 +23,19 @@
     }
 
     // Función para descargar archivo Excel
-    function downloadExcel(data) {
-        const worksheet = XLSX.utils.json_to_sheet(data);
+    function downloadExcel(data, listTitle, listURL) {
+        // Creamos una hoja de cálculo con los datos del título en las primeras filas
+        const worksheet = XLSX.utils.aoa_to_sheet([
+            [`List: ${listTitle}`],  // Primera fila: Título de la página
+            [`URL: ${listURL}`],     // Segunda fila: URL de la página
+            [],                      // Tercera fila: fila vacía
+            ['Title', 'Link', 'Pages'] // Cuarta fila: encabezados de la tabla
+        ]);
+
+        // Añadimos los datos a partir de la fila 5
+        XLSX.utils.sheet_add_json(worksheet, data, { origin: 'A5', skipHeader: true });
+
+        // Crear y descargar el archivo Excel
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "Novels");
         XLSX.writeFile(workbook, "novel_list.xlsx");
@@ -33,12 +44,14 @@
     // Extrae títulos, enlaces y número de páginas de las novelas
     function extractTitlesLinksAndPages() {
         const novels = document.querySelectorAll('.list-group-item');
-        let result = '';
+        const listTitle = document.title || 'Sin título'; // Obtiene el título de la página
+        const listURL = window.location.href; // URL de la lista
+        let result = `Lista: ${listTitle}\nURL: ${listURL}\n\n`; // Agrega el título y la URL al principio
         let excelData = [];
 
         if (novels.length === 0) {
             alert("No se encontraron novelas. Asegúrate de estar en la lista correcta.");
-            return;
+            return { result, excelData, listTitle, listURL };
         }
 
         novels.forEach(novel => {
@@ -58,7 +71,7 @@
             }
         });
 
-        return { result, excelData };
+        return { result, excelData, listTitle, listURL };
     }
 
     // Función para descargar lista en formato texto
@@ -73,9 +86,9 @@
 
     // Función para descargar lista en formato Excel
     function downloadExcelList() {
-        const { excelData } = extractTitlesLinksAndPages();
+        const { excelData, listTitle, listURL } = extractTitlesLinksAndPages();
         if (excelData.length) {
-            downloadExcel(excelData);
+            downloadExcel(excelData, listTitle, listURL);
         } else {
             alert("No se encontraron novelas con títulos, enlaces y páginas.");
         }
