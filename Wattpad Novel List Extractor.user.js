@@ -12,7 +12,7 @@
 (function() {
     'use strict';
 
-    // Función para descargar archivo .txt
+    // Function to download a .txt file
     function downloadText(filename, text) {
         const element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -22,34 +22,35 @@
         document.body.removeChild(element);
     }
 
-    // Función para descargar archivo Excel
+    // Function to download an Excel file
     function downloadExcel(data, listTitle, listURL) {
-        // Creamos una hoja de cálculo con los datos del título en las primeras filas
+        // Create a worksheet with the list title and URL at the top
         const worksheet = XLSX.utils.aoa_to_sheet([
-            [`List: ${listTitle}`],  // Primera fila: Título de la página
-            [`URL: ${listURL}`],     // Segunda fila: URL de la página
-            [],                      // Tercera fila: fila vacía
-            ['Title', 'Link', 'Pages'] // Cuarta fila: encabezados de la tabla
+            [`List: ${listTitle}`],  // First row: page title
+            [`URL: ${listURL}`],     // Second row: page URL
+            [],                      // Third row: empty row
+            ['Title', 'Link', 'Pages'] // Fourth row: table headers
         ]);
 
-        // Añadimos los datos a partir de la fila 5
+        // Add the data starting from the fifth row
         XLSX.utils.sheet_add_json(worksheet, data, { origin: 'A5', skipHeader: true });
 
-        // Crear y descargar el archivo Excel
+        // Create and download the Excel file
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "Novels");
         XLSX.writeFile(workbook, "novel_list.xlsx");
     }
 
-    // Extrae títulos, enlaces y número de páginas de las novelas
+    // Extract titles, links, and the number of pages of novels
     function extractTitlesLinksAndPages() {
         const novels = document.querySelectorAll('.list-group-item');
-        const listTitle = document.title || 'Sin título'; // Obtiene el título de la página
-        const listURL = window.location.href; // URL de la lista
-        let result = `Lista: ${listTitle}\nURL: ${listURL}\n\n`; // Agrega el título y la URL al principio
+        const totalNovels = novels.length;
+        const listTitle = (document.title || 'Sin título') + ` (Total: ${totalNovels})`; // Get the page title and add the total count
+        const listURL = window.location.href; // Get the list URL
+        let result = `Lista: ${listTitle}\nURL: ${listURL}\n\n`; // Add title and URL at the beginning
         let excelData = [];
 
-        if (novels.length === 0) {
+        if (totalNovels === 0) {
             alert("No se encontraron novelas. Asegúrate de estar en la lista correcta.");
             return { result, excelData, listTitle, listURL };
         }
@@ -74,7 +75,7 @@
         return { result, excelData, listTitle, listURL };
     }
 
-    // Función para descargar lista en formato texto
+    // Function to download the list in text format
     function downloadTextList() {
         const { result } = extractTitlesLinksAndPages();
         if (result.trim()) {
@@ -84,7 +85,7 @@
         }
     }
 
-    // Función para descargar lista en formato Excel
+    // Function to download the list in Excel format
     function downloadExcelList() {
         const { excelData, listTitle, listURL } = extractTitlesLinksAndPages();
         if (excelData.length) {
@@ -94,7 +95,7 @@
         }
     }
 
-    // Agregar los comandos al menú de Tampermonkey
+    // Add commands to the Tampermonkey menu
     GM_registerMenuCommand("Descargar lista (Texto)", downloadTextList);
     GM_registerMenuCommand("Descargar lista (Excel)", downloadExcelList);
 })();
