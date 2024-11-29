@@ -1,5 +1,5 @@
 # Wattpad Novel List Extractor
-**Última Actualización:** 30 de octubre de 2024
+**Última Actualización:** 28 de noviembre de 2024
 
 ![Tampermonkey](https://github.com/wernser412/Wattpad-Novel-List-Extractor/blob/main/GUI.jpg?raw=true)
 
