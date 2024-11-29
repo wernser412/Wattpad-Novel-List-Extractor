@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Wattpad Novel List Extractor
 // @namespace    http://tampermonkey.net/
-// @version      2024.10.30
+// @version      2024.11.28
 // @description  Extrae títulos, enlaces y número de páginas de novelas de Wattpad y guarda en archivo txt o excel.
 // @author       wernser412
+// @icon         https://www.wattpad.com/wp-web-assets/images/wattpad-logo.svg
 // @match        https://www.wattpad.com/list/*
 // @grant        GM_registerMenuCommand
 // @require      https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js
