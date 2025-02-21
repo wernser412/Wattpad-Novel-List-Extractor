@@ -11,7 +11,7 @@ Este script de Tampermonkey permite extraer títulos, enlaces y número de pági
 - Opción para descargar en formato de texto (.txt) o Excel (.xlsx).
 
 ## Instalación
-1. Asegúrate de tener instalado [Tampermonkey](https://www.tampermonkey.net/).
+1. Instala la extensión [Tampermonkey](https://www.tampermonkey.net/) en tu navegador.
 2. Haz clic en este enlace para instalar el script:  
    👉 **[Descargar Script](https://github.com/wernser412/Wattpad-Novel-List-Extractor/raw/refs/heads/main/Wattpad%20Novel%20List%20Extractor.user.js)**
 
