@@ -4,6 +4,7 @@
 // @version      2024.11.28
 // @description  Extrae títulos, enlaces y número de páginas de novelas de Wattpad y guarda en archivo txt o excel.
 // @author       wernser412
+// @downloadURL  https://github.com/wernser412/Wattpad-Novel-List-Extractor/raw/refs/heads/main/Wattpad%20Novel%20List%20Extractor.user.js
 // @icon         https://www.wattpad.com/wp-web-assets/images/wattpad-logo.svg
 // @match        https://www.wattpad.com/list/*
 // @grant        GM_registerMenuCommand
