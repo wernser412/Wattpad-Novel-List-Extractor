@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Wattpad Novel List Extractor
 // @namespace    http://tampermonkey.net/
-// @version      2025.09.08
+// @version      2025.09.19
 // @description  Extrae títulos, enlaces y número de páginas de novelas de Wattpad y guarda en archivo txt o excel.
 // @author       wernser412
 // @downloadURL  https://github.com/wernser412/Wattpad-Novel-List-Extractor/raw/refs/heads/main/Wattpad%20Novel%20List%20Extractor.user.js
-// @icon         data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzciIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCAzNyAyOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDQ3NjMgMjcuMzkxMkMxMi45Njk4IDI3LjM5MTIgMTMuNzQ1OSAyMC43Mjk5IDE3LjUxNjkgMTQuNzgzN0MxNy4zNzc2IDE2LjkwOTUgMTcuNTA2OSAxOC43OTAzIDE3LjkyNDggMjAuMDgzNEMxOS41NjY2IDI1LjE4NzEgMjUuMjE4MSAyNS41Nzg5IDI3Ljc4NTIgMjAuMzk2OEMzMS40MDY5IDEzLjA4OSAzMi40NDE3IDExLjM2NDkgMzYuMDkzMyA2LjEwNDQ5QzM4LjUwMTIgMi42MjY5MSAzNS43MDUyIDAuMzgzNjI4IDMyLjQ3MTUgMS45OTk5N0MzMC44MDk5IDIuODMyNjMgMjguMTEzNSA0Ljg5OTU4IDI0Ljc1MDQgOS4yOTc5OEMyNS4zMzc1IDUuOTU3NTUgMjUuMTc4MyAwLjI5NTQ2NCAyMC4yODMgMC42MTg3MzJDMTcuNjk2IDAuNzg1MjY0IDE0LjM0MjkgMy42NjUyOSA5Ljc2NTk1IDExLjA0MTdDMTAuMTQ0IDYuODk3OTYgMTAuMjkzMyAzLjk1OTE3IDguNDYyNTIgMi40MjExOUM3LjIwODg0IDEuMzYzMjMgNC4yNTM3MyAwLjk2MTU5MiAyLjQ4MjY1IDMuMjI0NDdDMC43MDE2MjcgNS41MDY5MyAwLjI4MzczMyA5Ljk1NDMxIDAuNDYyODMgMTQuNjM2OEMwLjgxMTA3NiAyNC40NDI2IDQuMzMzMzMgMjcuMzkxMiA3LjQ0NzYzIDI3LjM5MTJaIiBmaWxsPSIjRkY1MDBBIi8+Cjwvc3ZnPgo=
+// @icon         https://raw.githubusercontent.com/wernser412/Wattpad-Novel-List-Extractor/3ac9664ac4c5425310eb18e531e71b74ed206f41/ICONO.svg
 // @match        https://www.wattpad.com/list/*
 // @grant        GM_registerMenuCommand
 // @require      https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js
