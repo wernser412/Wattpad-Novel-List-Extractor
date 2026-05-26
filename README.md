@@ -1,7 +1,7 @@
 # Wattpad Novel List Extractor
-**Última Actualización:** 19 de septiembre de 2025
+**Última Actualización:** 26 de mayo de 2026
 
-![Tampermonkey](https://github.com/wernser412/Wattpad-Novel-List-Extractor/blob/main/GUI.jpg?raw=true)
+![Tampermonkey](https://github.com/wernser412/Wattpad-Novel-List-Extractor/blob/main/GUI.png?raw=true)
 
 ## Descripción
 Este script de Tampermonkey permite extraer títulos, enlaces y número de páginas de novelas de Wattpad. Los datos extraídos se pueden descargar en formatos de texto o Excel.
